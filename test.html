@@ -1,0 +1,153 @@
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>fullPage.js — 背景演示_dowebok</title>
+<link rel="stylesheet" href="css/jquery.fullPage.css">
+<style>
+/*.section1 { background: url(images/1.jpg) 50%;}
+.section2 { background: url(images/2.jpg) 50%;}
+.section3 { background: url(images/3.jpg) 50%;}
+.section4 { background: url(images/4.jpg) 50%;}*/
+.section { text-align: center; font: 50px "Microsoft Yahei"; width: 1200px;margin: 0 auto;}
+.animate{
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+#fp-nav{background-color: rgba(0,0,0,0.2);border-radius: 15px;}
+#fp-nav li{margin: 10px !important;}
+#fp-nav li .active{background: url(images/fullPage_menu_active.png) no-repeat;width: 62px;
+            height: 33px;left: -43px;top: -8px;}
+#fp-nav em{color: #fff;font-style: normal;line-height: 32px;padding-left: .8em;}
+#fp-nav li .active span, .fp-slidesNav .active span {
+    background-color: #ff8a76 !important;
+    left: auto;
+    right: 7px;
+    top: 12px;
+}
+#fp-nav span, .fp-slidesNav span {
+    background-color: #fff !important;
+    border: 0 !important;
+    width: 10px !important;
+    height: 10px !important;
+}
+.section{position: relative; overflow: hidden;}
+
+.p1_img1{width: 100%; position: absolute;bottom:-610px; left: 0; transition: all 0.5s;}
+.p1_img2{width: 515px;height: 369px; position: absolute;z-index: 3;bottom:10px;left: 50%;margin-left: -650px; opacity: 0; transition: all 1s;}
+.p1_img3{width: 645px;height: 648px; position: absolute; bottom:100%;left: 50%;margin-left: -322.5px; transition: all 1s;}
+.p1_img4{height: 800px;position:absolute;left: 10%;top: -20%; opacity: 0; transition: all 1s;}
+.p1_img6{width: 90%;position: absolute;top:10px;left: 50%;margin-left: -45%; opacity: 0;transition: all 1s;}
+.p1_img5{width: 1012px;height: 680px; position: absolute;bottom:10px;left: 12%;opacity: 0;animation:turn 2s linear 5s infinite;}
+/*@keyframes  turn{
+        25%{opacity: 0;}
+        50%{opacity: 1;}
+        75%{opacity: 0;}
+        100%{opacity: 1;}
+    }*/
+.active .p1_img1{bottom: 10px; transition-duration: 1s; transition-delay: 1s;}
+.active .p1_img2{opacity: 1; transition-duration: 1s; transition-delay: 2s;}
+.active .p1_img3{bottom: 10%; transition-duration: 1s; transition-delay: 1.7s;}
+.active .p1_img4{opacity: 1;transition-duration: 1s; transition-delay: 2.5s;}
+.active .p1_img5{opacity: 1; transition-duration: 1s; transition-delay: 2.8s;}
+.active .p1_img6{opacity: 1; transition-duration: 1s; transition-delay: 3s;}
+
+.p2_img1{width: 100%;height: 500px; position: absolute;bottom:20px; left: 0; opacity: 0; transition: all 1s;}
+.p2_img2{width:990px;height: 750px;position: absolute;top:-1220px;left: 50%;margin-left: -500px;  transition: all 1s; }
+.p2_img3{width: 700px;height: 400px; position: absolute;top:-1220px;left:50%; margin-left: -300px;  transition: all 1s;}
+.p2_img4{width: 507px;height: 203px; position: absolute;right: 10%;top: 0%;  opacity: 0; transition: all 1s;}
+
+.active .p2_img1{opacity: 1; transition-duration: 1s; transition-delay: 1s;}
+.active .p2_img2{top:20px; transition-duration: 1s; transition-delay: 1.5s;}
+.active .p2_img3{top: 12%; transition-duration: 1s; transition-delay: 2s;}
+.active .p2_img4{opacity: 1;transition-duration: 1s; transition-delay: 2.5s;}
+
+.p3_img1{width: 70%; height: 540px; position: absolute;bottom:50px; left: 12%; opacity: 0; transition: all 1s;}
+.p3_img2{width: 626px; height: 400px;position: absolute;left: 50%;margin-left: -323px; top:-100%;  transition: all 1s; }
+.p3_img3{width: 384px;height: 180px; position: absolute;top: -100%;left: 50%; margin-left: -192px;  transition: all 1s;}
+.p3_img4{width: 1250px; position: absolute;left:50%;margin-left: -650px; bottom: 20px; height: 420px;  opacity: 0; transition: all 1s;}
+.p3_img5{width: 506px; position: absolute;left:50%;top: 0%;margin-left: -253px;  opacity: 0; transition: all 1s;}
+.p3_img3_1{width: 66px;height: 120px;  position: absolute;left: 2%;top: -1800px;animation:load 2s linear 3s infinite; transform-origin:50% 100%;}
+.p3_img3_2{width: 40px;height: 90px; position: absolute;left: 92%;top: -1800px;animation:change 2s linear 3s infinite; transform-origin:50% 100%; }
+    @keyframes change{
+        25%{transform:scale(.9); }
+        50%{transform:scale(1);}
+        75%{transform:scale(1.1);}
+        100%{transform:scale(1);}
+    }
+    @keyframes load{
+        25%{transform:rotate(5deg); }
+        50%{transform:rotate(0deg);}
+        75%{transform:rotate(-5deg);}
+        100%{transform:rotate(0deg);}
+    }
+.active .p3_img1{opacity: 1; transition-duration: 1s; transition-delay: .5s;}
+.active .p3_img2{top:48%; transition-duration: 1s; transition-delay: 1s;}
+.active .p3_img3{top:30%; transition-duration: 1s; transition-delay: 1.2s;}
+.active .p3_img4{opacity: 1;transition-duration: 1s; transition-delay: 1.7s;}
+.active .p3_img5{opacity: 1;transition-duration: 1s; transition-delay: 3s;}
+.active .p3_img3_1{top: -150px;transition-duration: 1s; transition-delay: 2s;}
+.active .p3_img3_2{top: -150px;transition-duration: 1s; transition-delay: 2s;}
+</style>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+<script>
+$(function(){
+    $('#dowebok').fullpage({
+        css3: true,
+        navigation: true,
+        navigationPosition: "right",
+        afterRender: function(anchorLink, index) {
+            $("#fp-nav em").hide(), $("#fp-nav").find("a.active").html("<span></span><em>01</em>").find("em").show();
+        },
+        onLeave: function(index, next) {
+            // 显示默认隐藏的页面
+            $('#J_p' + next ).show();
+            // 右侧翻页菜单
+            $("#fp-nav em").hide(), $("#fp-nav").find("a").eq(next - 1).html("<span></span><em>0" + next + "</em>").find("em").show()
+            // , $(".section" + index).removeClass("animate"), index == 3 && $(".pos").hide()
+        },
+    });
+});
+</script>
+</head>
+<body>
+<div id="dowebok">
+    <div class="section section1">
+        <div class="wrap">
+            <!-- <img src="images/p1_img4.png" alt="" class="p1_img4"> -->
+            <img src="images/p1_img1.png" alt="" class="p1_img1">
+            <img src="images/p1_img2.png" alt="" class="p1_img2">
+            <img src="images/p1_img3.png" alt="" class="p1_img3">
+            <img src="images/p1_img5.png" alt="" class="p1_img5">
+            <img src="images/p1_img6.png" alt="" class="p1_img6"> 
+        </div> 
+    </div>
+    <div class="section section2">
+        <div class="wrap">
+            <img src="images/p2_img1.png" alt="" class="p2_img1">
+            <img src="images/p2_img3.png" alt="" class="p2_img3">
+            <img src="images/p2_img2.png" alt="" class="p2_img2">
+            <img src="images/p2_img4.png" alt="" class="p2_img4">
+        </div>
+    </div>
+    <div class="section section3">
+        <div class="wrap">
+            <img src="images/p3_img1.png" alt="" class="p3_img1">
+            <img src="images/p3_img2.png" alt="" class="p3_img2">
+            
+            <img src="images/p3_img3.png" alt="" class="p3_img3">
+           <div class="p3_img3" style="position:relative">
+                <img src="images/p3_img3_1.png" alt="" class="p3_img3_1">
+                <img src="images/p3_img3_2.png" alt="" class="p3_img3_2">
+            </div>
+            <img src="images/p3_img4.png" alt="" class="p3_img4">
+            <img src="images/p3_img5.png" alt="" class="p3_img5">
+        </div>
+    </div>
+</div>
+
+
+
+
